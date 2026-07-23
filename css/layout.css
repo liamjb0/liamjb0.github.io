@@ -24,7 +24,7 @@ body {
   margin: 225px 425px;
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 64px;
 }
 
 
@@ -57,6 +57,21 @@ body {
   flex-basis: 50%;
 }
 
+/* Keep desktop text beside image. */
+@media only screen and (min-width: 801px) {
+  #portfolio-header {
+    gap: 32px;
+  }
+
+  #portfolio-header-image-container {
+    flex: 0 0 auto;
+  }
+
+  #portfolio-header-text-container {
+    flex: 1 1 0;
+  }
+}
+
 
 
 
@@ -71,7 +86,7 @@ body {
 .about-section-content {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 20px;
 }
 
 
@@ -218,6 +233,3 @@ body {
     max-width: 100%;
   }
 }
-
-
-
