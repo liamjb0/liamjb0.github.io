@@ -45,20 +45,24 @@
 .day-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .day-nav button {
-  min-height: 36px;
-  padding: 6px 8px;
-  border: 1px solid #777;
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 8px;
+  border: 1px solid #999;
   border-radius: 6px;
-  background: white;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #fafafa;
   color: #242424;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
+  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -218,6 +222,14 @@
   .day-picker {
     max-width: none;
     margin-top: 28px;
+  }
+
+  .day-nav {
+    margin-top: 14px;
+  }
+
+  .day-nav button {
+    min-height: 42px;
   }
 
   .event {
