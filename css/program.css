@@ -31,13 +31,6 @@
   margin-top: 36px;
 }
 
-.day-picker label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .day-picker select {
   width: 100%;
   min-height: 48px;
@@ -49,7 +42,38 @@
   font: inherit;
 }
 
-.day-picker select:focus-visible {
+.day-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.day-nav button {
+  min-height: 36px;
+  padding: 6px 8px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  background: white;
+  color: #242424;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.day-nav button:hover:not(:disabled) {
+  background: #f4f4f4;
+}
+
+.day-nav button:disabled {
+  color: #888;
+  cursor: default;
+  opacity: .55;
+}
+
+.day-picker select:focus-visible,
+.day-nav button:focus-visible {
   outline: 3px solid #8ab4f8;
   outline-offset: 2px;
 }

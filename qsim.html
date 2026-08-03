@@ -25,8 +25,7 @@
         <h1>QSim 2026 Programme</h1>
 
         <div class="day-picker">
-          <label for="day-select">Choose a day</label>
-          <select id="day-select">
+          <select id="day-select" aria-label="Choose a day">
             <optgroup label="Summer school">
               <option value="2026-08-07">Friday, August 7</option>
               <option value="2026-08-08">Saturday, August 8</option>
@@ -40,6 +39,10 @@
               <option value="2026-08-14">Friday, August 14</option>
             </optgroup>
           </select>
+          <div class="day-nav">
+            <button type="button" id="previous-day">← Previous day</button>
+            <button type="button" id="next-day">Next day →</button>
+          </div>
         </div>
 
         <div class="legend" id="conference-legend" aria-label="Conference programme legend" hidden>
@@ -52,7 +55,7 @@
         <h2 id="summer-friday-heading">Friday, August 7</h2>
         <p class="day-speaker">Speaker: <strong>Freek Witteveen</strong></p>
         <ol class="schedule">
-          <li class="event general"><time>09:00–09:30</time><div><h3>Walk in and registration with coffee/tea</h3></div></li>
+          <li class="event general"><time>09:00–09:30</time><div><h3>Arrival</h3></div></li>
           <li class="event school"><time>09:30–11:00</time><div><h3>Practical information + lecture</h3><p>A1.02</p></div></li>
           <li class="event break"><time>11:00–11:15</time><div><h3>Break</h3></div></li>
           <li class="event school"><time>11:15–12:15</time><div><h3>Lecture</h3><p>A1.02</p></div></li>
@@ -102,7 +105,7 @@
         <ol class="schedule">
           <li class="event general">
             <time>08:30–09:15</time>
-            <div><h3>Walk-in/check-in, badge pick-up, coffee/tea</h3></div>
+            <div><h3>Arrival</h3></div>
           </li>
           <li class="event general">
             <time>09:15–09:25</time>
@@ -118,7 +121,7 @@
           </li>
           <li class="event break">
             <time>10:35–11:10</time>
-            <div><h3>Coffee/tea break</h3></div>
+            <div><h3>Coffee/tea</h3></div>
           </li>
           <li class="event invited">
             <time>11:10–11:50</time>
@@ -150,7 +153,7 @@
           </li>
           <li class="event break">
             <time>15:20–15:50</time>
-            <div><h3>Tea/coffee break</h3></div>
+            <div><h3>Tea/coffee</h3></div>
           </li>
           <li class="event invited">
             <time>15:50–16:30</time>
@@ -173,7 +176,7 @@
           <li class="event invited"><time>09:15–09:55</time><div><h3>Hybrid Digital-Analog Quantum Simulation with Ultracold Fermions</h3><p><strong>Philipp Preiss</strong></p></div></li>
           <li class="event contributed"><time>09:55–10:15</time><div><h3>Pseudogap at ultralow temperatures in a Fermi-Hubbard quantum simulator</h3><p><strong>Lev Kendrick</strong>, ...</p></div></li>
           <li class="event contributed"><time>10:15–10:35</time><div><h3>Randomized Sparsification of Commuting Unitaries</h3><p><strong>Richard Allen</strong> and Aram Harrow</p></div></li>
-          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea break</h3></div></li>
+          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event invited"><time>11:10–11:50</time><div><h3>How to represent bosons using qubits for quantum simulation</h3><p><strong>Barbara Terhal</strong></p></div></li>
           <li class="event contributed"><time>11:50–12:10</time><div><h3>Theory and Architecture of Weak Transversal Gates</h3><p><strong>Nobuyuki Yoshioka</strong>, ...</p></div></li>
           <li class="event contributed"><time>12:10–12:30</time><div><h3>Significantly cheaper fault-tolerant Trotterization by improved Clifford+T synthesis for small-angle rotations</h3><p><strong>Nick Blunt</strong>, ...</p></div></li>
@@ -181,7 +184,7 @@
           <li class="event invited"><time>14:00–14:40</time><div><h3>Observation of Improved Accuracy over Classical Sparse Ground-State Solvers using a Quantum Computer</h3><p><strong>William Kirby</strong></p></div></li>
           <li class="event contributed"><time>14:40–15:00</time><div><h3>Resonant false vacuum decay in two dimensions on a 4000-qubit quantum annealer</h3><p><strong>Gregor Humar</strong>, ...</p></div></li>
           <li class="event contributed"><time>15:00–15:20</time><div><h3>Quantum computation of molecular geometry via many-body nuclear spin echoes</h3><p><strong>Thomas E. O'Brien</strong>, ...</p></div></li>
-          <li class="event break"><time>15:20–15:50</time><div><h3>Tea/coffee break</h3></div></li>
+          <li class="event break"><time>15:20–15:50</time><div><h3>Tea/coffee</h3></div></li>
           <li class="event invited"><time>15:50–16:30</time><div><h3>Tensor network studies of SU(N) Heisenberg and Hubbard models</h3><p><strong>Philippe Corboz</strong></p></div></li>
           <li class="event contributed"><time>16:30–16:50</time><div><h3>Quantum Simulation of Quantum Chromodynamics</h3><p><strong>Carter Gustin</strong>, ...</p></div></li>
           <li class="event social"><time>16:50–18:30</time><div><h3>Poster session 1</h3></div></li>
@@ -194,7 +197,7 @@
           <li class="event invited"><time>09:15–09:55</time><div><h3>Quasiparticle quantum simulation: a framework for robust quantum advantage across electronic structure theory and dynamics</h3><p><strong>Garnet Chan</strong></p></div></li>
           <li class="event contributed"><time>09:55–10:15</time><div><h3>Verifiable Quantum Advantage via Optimized DQI Circuits</h3><p><strong>Tanuj Khattar</strong>, ...</p></div></li>
           <li class="event contributed"><time>10:15–10:35</time><div><h3>Phase estimation with partially randomized time evolution</h3><p><strong>Jakob Günther</strong>, ...</p></div></li>
-          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea break</h3></div></li>
+          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event invited"><time>11:10–11:50</time><div><h3>Decoded Quantum Sensing with Dipolar and Cavity-Coupled Spins</h3><p><strong>Monika Schleier-Smith</strong></p></div></li>
           <li class="event contributed"><time>11:50–12:10</time><div><h3>Quantum Advantage for Dynamical Phase Transition</h3><p><strong>Jue Xu</strong>, Xiao Yuan and Qi Zhao</p></div></li>
           <li class="event contributed"><time>12:10–12:30</time><div><h3>Near-Term Quantum Simulation Algorithms for the Dynamics of Open Quantum Systems</h3><p><strong>Jin-Peng Liu</strong>, ...</p></div></li>
@@ -202,7 +205,7 @@
           <li class="event invited"><time>14:00–14:50</time><div><h3>Panel discussion</h3><p>Panel members: Garnet Chan, Monika Schleier-Smith, Barbara Terhal and Johannes Zeiher. Moderators: Arghavan Safavi-Naini and Kareljan Schoutens</p></div></li>
           <li class="event contributed"><time>14:50–15:10</time><div><h3>Taming Trotter Errors with Quantum Resources</h3><p><strong>Xiangran Zhang</strong>, Jue Xu, Qi Zhao and You Zhou</p></div></li>
           <li class="event contributed"><time>15:10–15:30</time><div><h3>Physically-Motivated Guiding States for Local Hamiltonians</h3><p><strong>Gabriel Waite</strong>, Karl Lin, Samuel Elman and Michael Bremner</p></div></li>
-          <li class="event break"><time>15:30–16:00</time><div><h3>Tea/coffee break</h3></div></li>
+          <li class="event break"><time>15:30–16:00</time><div><h3>Tea/coffee</h3></div></li>
           <li class="event social"><time>16:00–17:30</time><div><h3>Onboarding and canal boat trip to conference dinner</h3><p>For those signed up</p></div></li>
           <li class="event social"><time>17:30–20:30</time><div><h3>Conference dinner</h3><p>For those signed up</p></div></li>
         </ol>
@@ -214,7 +217,7 @@
           <li class="event invited"><time>09:15–09:55</time><div><h3>Quantum algorithms for stochastic nonlinear differential equations</h3><p><strong>Sergey Bravyi</strong></p></div></li>
           <li class="event contributed"><time>09:55–10:15</time><div><h3>Predicting quantum dynamics of 50+ qubits from matrix product states with limited bond dimension</h3><p><strong>Kostyantyn Kechedzhi</strong></p></div></li>
           <li class="event contributed"><time>10:15–10:35</time><div><h3>Faster quantum chemistry simulations on a quantum computer with improved tensor factorization and active volume compilation</h3><p><strong>Nikolaj Moll</strong>, ...</p></div></li>
-          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea break</h3></div></li>
+          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event invited"><time>11:10–11:50</time><div><h3>Utility-scale electronic structure with under 100k noisy qubits</h3><p><strong>Guang Hao Low</strong></p></div></li>
           <li class="event contributed"><time>11:50–12:10</time><div><h3>Quantum Algorithms for Heterogeneous PDEs: The Neutron Diffusion Eigenvalue Problem</h3><p><strong>Jeffery Yu</strong>, ...</p></div></li>
           <li class="event contributed"><time>12:10–12:30</time><div><h3>Efficient quantum algorithm for linear matrix differential equations and applications to open quantum systems</h3><p><strong>Sophia Simon</strong>, Dominic Berry and Rolando Somma</p></div></li>
@@ -222,7 +225,7 @@
           <li class="event invited"><time>14:00–14:40</time><div><h3>Quantum information and simulation with dual-species Rydberg arrays</h3><p><strong>Alexander Impertro</strong></p></div></li>
           <li class="event contributed"><time>14:40–15:00</time><div><h3>One-to-one quantum simulation of the low-dimensional frustrated quantum magnet TmMgGaO4 with 256 qubits</h3><p><strong>Lucas Leclerc</strong>, ...</p></div></li>
           <li class="event contributed"><time>15:00–15:20</time><div><h3>Unified Probe of Quantum Chaos and Ergodicity from Hamiltonian Learning</h3><p><strong>Nik Gjonbalaj</strong>, Christian Kokail, Susanne Yelin and Soonwon Choi</p></div></li>
-          <li class="event break"><time>15:20–16:00</time><div><h3>Tea/coffee break</h3></div></li>
+          <li class="event break"><time>15:20–16:00</time><div><h3>Tea/coffee</h3></div></li>
           <li class="event contributed"><time>16:00–16:20</time><div><h3>Nearly-optimal fermion routing without ancillas</h3><p><strong>Jeffery Yu</strong>, ...</p></div></li>
           <li class="event contributed"><time>16:20–16:40</time><div><h3>Optimal strategies for near-term simulation of fermionic systems with scalable local fermion-to-qubit mappings</h3><p><strong>Manuel Algaba</strong>, ...</p></div></li>
           <li class="event social"><time>16:40–18:30</time><div><h3>Poster session 2</h3></div></li>
@@ -235,7 +238,7 @@
           <li class="event invited"><time>09:15–09:55</time><div><h3>Exploring Interacting Spin Physics with Molecular Tweezer Arrays</h3><p><strong>Lawrence Cheuk</strong></p></div></li>
           <li class="event contributed"><time>09:55–10:15</time><div><h3>Singlet-triplet oscillations in trapped circular Rydberg atoms of strontium</h3><p><strong>Mathis Pepin</strong></p></div></li>
           <li class="event contributed"><time>10:15–10:35</time><div><h3>Programmable quantum simulation of anharmonic dynamics</h3><p><strong>Cameron McGarry</strong>, ...</p></div></li>
-          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea break</h3></div></li>
+          <li class="event break"><time>10:35–11:10</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event invited"><time>11:10–11:50</time><div><h3>Quantum simulation with neutral atoms: from analog to digital</h3><p><strong>Alexandra Geim</strong></p></div></li>
           <li class="event contributed"><time>11:50–12:10</time><div><h3>Detecting the length-scale of topological order with quantum simulators</h3><p><strong>Robert Ott</strong>, Lisa Bombieri, Giuliano Giudici and Hannes Pichler</p></div></li>
           <li class="event contributed"><time>12:10–12:30</time><div><h3>Adiabatic echo protocols for robust preparation of entangled many-body states</h3><p><strong>Zhongda Zeng</strong>, ...</p></div></li>
@@ -250,6 +253,8 @@
     <script>
       (() => {
         const select = document.getElementById('day-select');
+        const previousButton = document.getElementById('previous-day');
+        const nextButton = document.getElementById('next-day');
         const sections = [...document.querySelectorAll('.program-day')];
         const conferenceLegend = document.getElementById('conference-legend');
         const dates = sections.map((section) => section.dataset.date);
@@ -262,12 +267,17 @@
         const initialDate = dates.find((date) => date >= today) || dates[dates.length - 1];
 
         const showDay = (date) => {
+          const index = dates.indexOf(date);
           sections.forEach((section) => { section.hidden = section.dataset.date !== date; });
           conferenceLegend.hidden = date < '2026-08-10';
           select.value = date;
+          previousButton.disabled = index === 0;
+          nextButton.disabled = index === dates.length - 1;
         };
 
         select.addEventListener('change', () => showDay(select.value));
+        previousButton.addEventListener('click', () => showDay(dates[dates.indexOf(select.value) - 1]));
+        nextButton.addEventListener('click', () => showDay(dates[dates.indexOf(select.value) + 1]));
         showDay(initialDate);
       })();
     </script>
