@@ -49,6 +49,7 @@
           <span><span class="legend-swatch invited-swatch"></span>Invited talk</span>
           <span><span class="legend-swatch contributed-swatch"></span>Contributed talk</span>
         </div>
+        <p class="program-intro">Click/tap a talk for author and abstract info.</p>
       </header>
 
       <section class="program-day" data-date="2026-08-07" aria-labelledby="summer-friday-heading">
@@ -153,7 +154,7 @@
           </li>
           <li class="event break">
             <time>15:20–15:50</time>
-            <div><h3>Tea/coffee</h3></div>
+            <div><h3>Coffee/tea</h3></div>
           </li>
           <li class="event invited">
             <time>15:50–16:30</time>
@@ -184,7 +185,7 @@
           <li class="event invited"><time>14:00–14:40</time><div><h3>Observation of Improved Accuracy over Classical Sparse Ground-State Solvers using a Quantum Computer</h3><p><strong>William Kirby</strong></p></div></li>
           <li class="event contributed"><time>14:40–15:00</time><div><h3>Resonant false vacuum decay in two dimensions on a 4000-qubit quantum annealer</h3><p><strong>Gregor Humar</strong>, ...</p></div></li>
           <li class="event contributed"><time>15:00–15:20</time><div><h3>Quantum computation of molecular geometry via many-body nuclear spin echoes</h3><p><strong>Thomas E. O'Brien</strong>, ...</p></div></li>
-          <li class="event break"><time>15:20–15:50</time><div><h3>Tea/coffee</h3></div></li>
+          <li class="event break"><time>15:20–15:50</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event invited"><time>15:50–16:30</time><div><h3>Tensor network studies of SU(N) Heisenberg and Hubbard models</h3><p><strong>Philippe Corboz</strong></p></div></li>
           <li class="event contributed"><time>16:30–16:50</time><div><h3>Quantum Simulation of Quantum Chromodynamics</h3><p><strong>Carter Gustin</strong>, ...</p></div></li>
           <li class="event social"><time>16:50–18:30</time><div><h3>Poster session 1</h3></div></li>
@@ -205,7 +206,7 @@
           <li class="event invited"><time>14:00–14:50</time><div><h3>Panel discussion</h3><p>Panel members: Garnet Chan, Monika Schleier-Smith, Barbara Terhal and Johannes Zeiher. Moderators: Arghavan Safavi-Naini and Kareljan Schoutens</p></div></li>
           <li class="event contributed"><time>14:50–15:10</time><div><h3>Taming Trotter Errors with Quantum Resources</h3><p><strong>Xiangran Zhang</strong>, Jue Xu, Qi Zhao and You Zhou</p></div></li>
           <li class="event contributed"><time>15:10–15:30</time><div><h3>Physically-Motivated Guiding States for Local Hamiltonians</h3><p><strong>Gabriel Waite</strong>, Karl Lin, Samuel Elman and Michael Bremner</p></div></li>
-          <li class="event break"><time>15:30–16:00</time><div><h3>Tea/coffee</h3></div></li>
+          <li class="event break"><time>15:30–16:00</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event social"><time>16:00–17:30</time><div><h3>Onboarding and canal boat trip to conference dinner</h3><p>For those signed up</p></div></li>
           <li class="event social"><time>17:30–20:30</time><div><h3>Conference dinner</h3><p>For those signed up</p></div></li>
         </ol>
@@ -225,7 +226,7 @@
           <li class="event invited"><time>14:00–14:40</time><div><h3>Quantum information and simulation with dual-species Rydberg arrays</h3><p><strong>Alexander Impertro</strong></p></div></li>
           <li class="event contributed"><time>14:40–15:00</time><div><h3>One-to-one quantum simulation of the low-dimensional frustrated quantum magnet TmMgGaO4 with 256 qubits</h3><p><strong>Lucas Leclerc</strong>, ...</p></div></li>
           <li class="event contributed"><time>15:00–15:20</time><div><h3>Unified Probe of Quantum Chaos and Ergodicity from Hamiltonian Learning</h3><p><strong>Nik Gjonbalaj</strong>, Christian Kokail, Susanne Yelin and Soonwon Choi</p></div></li>
-          <li class="event break"><time>15:20–16:00</time><div><h3>Tea/coffee</h3></div></li>
+          <li class="event break"><time>15:20–16:00</time><div><h3>Coffee/tea</h3></div></li>
           <li class="event contributed"><time>16:00–16:20</time><div><h3>Nearly-optimal fermion routing without ancillas</h3><p><strong>Jeffery Yu</strong>, ...</p></div></li>
           <li class="event contributed"><time>16:20–16:40</time><div><h3>Optimal strategies for near-term simulation of fermionic systems with scalable local fermion-to-qubit mappings</h3><p><strong>Manuel Algaba</strong>, ...</p></div></li>
           <li class="event social"><time>16:40–18:30</time><div><h3>Poster session 2</h3></div></li>
@@ -250,6 +251,16 @@
       </section>
     </main>
 
+    <dialog class="talk-dialog" id="talk-dialog" aria-labelledby="talk-dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" type="submit" aria-label="Close talk details">×</button>
+      </form>
+      <h2 id="talk-dialog-title"></h2>
+      <p class="dialog-authors" id="talk-dialog-authors"></p>
+      <div class="dialog-abstract" id="talk-dialog-abstract"></div>
+    </dialog>
+
+    <script src="./js/qsim-talks.js"></script>
     <script>
       (() => {
         const select = document.getElementById('day-select');
@@ -257,6 +268,10 @@
         const nextButton = document.getElementById('next-day');
         const sections = [...document.querySelectorAll('.program-day')];
         const conferenceLegend = document.getElementById('conference-legend');
+        const talkDialog = document.getElementById('talk-dialog');
+        const dialogTitle = document.getElementById('talk-dialog-title');
+        const dialogAuthors = document.getElementById('talk-dialog-authors');
+        const dialogAbstract = document.getElementById('talk-dialog-abstract');
         const dates = sections.map((section) => section.dataset.date);
         const parts = Object.fromEntries(
           new Intl.DateTimeFormat('en', {
@@ -264,7 +279,28 @@
           }).formatToParts().map(({ type, value }) => [type, value])
         );
         const today = `${parts.year}-${parts.month}-${parts.day}`;
-        const initialDate = dates.find((date) => date >= today) || dates[dates.length - 1];
+        const savedDate = location.hash.slice(1);
+        const initialDate = dates.includes(savedDate)
+          ? savedDate
+          : dates.find((date) => date >= today) || dates[dates.length - 1];
+
+        document.querySelectorAll('.event.invited, .event.contributed').forEach((event) => {
+          const title = event.querySelector('h3').textContent.trim();
+          if (!window.qsimTalks[title]) return;
+          event.classList.add('has-details');
+          event.dataset.talk = title;
+          event.tabIndex = 0;
+          event.setAttribute('role', 'button');
+          event.setAttribute('aria-label', `View details for ${title}`);
+        });
+
+        const openTalk = (event) => {
+          const talk = window.qsimTalks[event.dataset.talk];
+          dialogTitle.textContent = event.dataset.talk;
+          dialogAuthors.textContent = talk.authors;
+          dialogAbstract.textContent = talk.abstract;
+          talkDialog.showModal();
+        };
 
         const showDay = (date) => {
           const index = dates.indexOf(date);
@@ -273,11 +309,28 @@
           select.value = date;
           previousButton.disabled = index === 0;
           nextButton.disabled = index === dates.length - 1;
+          history.replaceState(null, '', `#${date}`);
         };
 
         select.addEventListener('change', () => showDay(select.value));
         previousButton.addEventListener('click', () => showDay(dates[dates.indexOf(select.value) - 1]));
         nextButton.addEventListener('click', () => showDay(dates[dates.indexOf(select.value) + 1]));
+        document.addEventListener('click', (event) => {
+          const talk = event.target.closest('.has-details');
+          if (talk) openTalk(talk);
+        });
+        document.addEventListener('keydown', (event) => {
+          if (!event.target.matches('.has-details') || !['Enter', ' '].includes(event.key)) return;
+          event.preventDefault();
+          openTalk(event.target);
+        });
+        talkDialog.addEventListener('click', (event) => {
+          if (event.target === talkDialog) talkDialog.close();
+        });
+        window.addEventListener('hashchange', () => {
+          const date = location.hash.slice(1);
+          if (dates.includes(date)) showDay(date);
+        });
         showDay(initialDate);
       })();
     </script>
