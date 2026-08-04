@@ -257,9 +257,11 @@
       <form method="dialog">
         <button class="dialog-close" type="submit" aria-label="Close talk details">×</button>
       </form>
-      <h2 id="talk-dialog-title"></h2>
-      <p class="dialog-authors" id="talk-dialog-authors"></p>
-      <div class="dialog-abstract" id="talk-dialog-abstract"></div>
+      <div class="dialog-content" id="talk-dialog-content">
+        <h2 id="talk-dialog-title"></h2>
+        <p class="dialog-authors" id="talk-dialog-authors"></p>
+        <div class="dialog-abstract" id="talk-dialog-abstract"></div>
+      </div>
     </dialog>
 
     <script src="./js/qsim-talks.js"></script>
@@ -271,6 +273,7 @@
         const sections = [...document.querySelectorAll('.program-day')];
         const conferenceLegend = document.getElementById('conference-legend');
         const talkDialog = document.getElementById('talk-dialog');
+        const dialogContent = document.getElementById('talk-dialog-content');
         const dialogTitle = document.getElementById('talk-dialog-title');
         const dialogAuthors = document.getElementById('talk-dialog-authors');
         const dialogAbstract = document.getElementById('talk-dialog-abstract');
@@ -302,10 +305,10 @@
           dialogAuthors.textContent = talk.authors;
           dialogAbstract.textContent = talk.abstract;
           talkDialog.showModal();
-          talkDialog.scrollTop = 0;
+          dialogContent.scrollTop = 0;
           requestAnimationFrame(() => {
-            talkDialog.scrollTop = 0;
-            requestAnimationFrame(() => { talkDialog.scrollTop = 0; });
+            dialogContent.scrollTop = 0;
+            requestAnimationFrame(() => { dialogContent.scrollTop = 0; });
           });
         };
 
@@ -334,7 +337,7 @@
         talkDialog.addEventListener('click', (event) => {
           if (event.target === talkDialog) talkDialog.close();
         });
-        talkDialog.addEventListener('close', () => { talkDialog.scrollTop = 0; });
+        talkDialog.addEventListener('close', () => { dialogContent.scrollTop = 0; });
         window.addEventListener('hashchange', () => {
           const date = location.hash.slice(1);
           if (dates.includes(date)) showDay(date);
