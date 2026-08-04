@@ -251,6 +251,8 @@
       </section>
     </main>
 
+    <footer class="codex-credit page-credit">Built with OpenAI's Codex 5.6 Sol</footer>
+
     <dialog class="talk-dialog" id="talk-dialog" aria-labelledby="talk-dialog-title">
       <form method="dialog">
         <button class="dialog-close" type="submit" aria-label="Close talk details">×</button>
@@ -300,6 +302,11 @@
           dialogAuthors.textContent = talk.authors;
           dialogAbstract.textContent = talk.abstract;
           talkDialog.showModal();
+          talkDialog.scrollTop = 0;
+          requestAnimationFrame(() => {
+            talkDialog.scrollTop = 0;
+            requestAnimationFrame(() => { talkDialog.scrollTop = 0; });
+          });
         };
 
         const showDay = (date) => {
@@ -327,6 +334,7 @@
         talkDialog.addEventListener('click', (event) => {
           if (event.target === talkDialog) talkDialog.close();
         });
+        talkDialog.addEventListener('close', () => { talkDialog.scrollTop = 0; });
         window.addEventListener('hashchange', () => {
           const date = location.hash.slice(1);
           if (dates.includes(date)) showDay(date);
